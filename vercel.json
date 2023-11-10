@@ -3,7 +3,7 @@
   "name": "platzi-store",
   "builds": [
     {
-      "src": "dist/main.ts",
+      "src": "dist/main.js",
       "use": "@vercel/node"
     }
   ]
