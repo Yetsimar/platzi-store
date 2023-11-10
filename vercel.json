@@ -1,20 +1,20 @@
 {
   "version": 2,
-  "name": "platzi-store", // Cambia esto al nombre de tu aplicación
+  "name": "platzi-store",
   "builds": [
     {
-      "src": "dist/main.ts", // Ruta al archivo principal de tu aplicación
-      "use": "@now/node" // Especifica el entorno Node.js
+      "src": "dist/main.ts",
+      "use": "@now/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "dist/main.ts" // Define las rutas de tu API si es necesario
+      "dest": "dist/main.ts"
     },
     {
       "src": ".*",
-      "dest": "dist/main.ts" // Enrutamiento predeterminado para la aplicación
+      "dest": "dist/main.ts"
     }
   ]
 }
