@@ -6,15 +6,5 @@
       "src": "dist/main.ts",
       "use": "@vercel/node"
     }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "dist/main.ts"
-    },
-    {
-      "src": ".*",
-      "dest": "dist/main.ts"
-    }
   ]
 }
