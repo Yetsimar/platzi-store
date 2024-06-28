@@ -37,35 +37,21 @@ export class ProductsController {
   @Get(':id')
   @HttpCode(HttpStatus.ACCEPTED)
   findOne(@Param('id', ParseIntPipe) id: number) {
-    //
-    // response.status(200).send({ // con express
-    //   message: `Product ${id}`
-    // })
     return this.productsService.findOne(id);
   }
 
   @Post()
   create(@Body() payload: CreateProductDto) {
-    // return {
-    //   message: 'Accion de crear',
-    //   payload
-    // }
     return this.productsService.create(payload);
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() payload: UpdateProductDto) {
-    // return {
-    //   message: 'Accion de update',
-    //   id,
-    //   payload
-    // }
-
+  update(@Param('id', ParseIntPipe) id: number, @Body() payload: UpdateProductDto) {
     return this.productsService.update(id, payload);
   }
 
   @Delete(':id')
-  delete(@Param('id') id: number) {
-    return this.productsService.remove(+id);
+  delete(@Param('id', ParseIntPipe) id: number) {
+    return this.productsService.delete(+id);
   }
 }

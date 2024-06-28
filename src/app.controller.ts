@@ -15,5 +15,13 @@ export class AppController {
     return 'Hola';
   }
 
+  @Get('tasks')
+  tasks() {
+    return this.appService.getTasks();
+  }
 
+  @Get('tasks/:id')
+  getOneTask(@Param('id') id: number) {
+    return this.appService.getOneTask(id);
+  }
 }

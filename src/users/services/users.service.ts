@@ -3,11 +3,13 @@ import { CreateUserDto, UpdateUserDto } from 'src/users/dtos/users.dto';
 import { User } from 'src/users/entities/users.entity';
 import { ProductsService } from '../../products/services/products.service';
 import { ConfigService } from '@nestjs/config'
+import { Client } from 'pg';
 
 
 @Injectable()
 export class UsersService {
   constructor(
+    @Inject('PG') private clientPg: Client,
     private productsService: ProductsService,
     private configService: ConfigService
   ) {}
@@ -66,12 +68,12 @@ export class UsersService {
     return true;
   }
 
-  getOrdersByUser(id: number) {
+  async getOrdersByUser(id: number) {
     const user = this.findOne(id);
     return {
       date: new Date(),
       user,
-      products: this.productsService.findAll(),
+      products: await this.productsService.findAll(),
     };
   }
 }
